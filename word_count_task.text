@@ -1,0 +1,6 @@
+kubectl run --namespace default spark-client --rm --tty -i --restart=Never \
+  --image=docker.io/bitnami/spark:3.0.1-debian-10-r115 \
+  -- spark-submit --master spark://34.82.13.2:7077 \
+  --deploy-mode cluster \
+  --class org.apache.spark.examples.JavaWordCount \
+  -- /data/my.jar /data/test.txt
