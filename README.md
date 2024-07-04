@@ -138,12 +138,7 @@ This project demonstrates the implementation of Word Count and PageRank algorith
 
 1. **Submit a Word Count Task**:
     ```sh
-    kubectl run --namespace default spark-client --rm --tty -i --restart=Never \
-      --image=docker.io/bitnami/spark:3.0.1-debian-10-r115 \
-      -- spark-submit --master spark://<EXTERNAL_IP>:7077 \
-      --deploy-mode cluster \
-      --class org.apache.spark.examples.JavaWordCount \
-      -- /data/my.jar /data/test.txt
+    kubectl exec -it spark-master-0 -- spark-submit --master spark://<<EXTERNAL_IP>>:7077 --deploy-mode cluster --class org.apache.spark.examples.JavaWordCount /data/my.jar /data/test.txt![image](https://github.com/zeynnepps/PySpark-on-Kubernetes-Word-Count-PageRank/assets/49025266/46ac55d7-eda5-409d-8a8d-1a44f607602e)
     ```
 
 2. **View the Output of the Completed Jobs**:
